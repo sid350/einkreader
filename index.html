@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EinkReader: a calm e-book reader for Android</title>
-<meta name="description" content="EinkReader is a free e-book reader for Android phones, tablets and e-ink screens. EPUB, FB2, no ads, no tracking.">
+<title>EinkReader: e-ink contrast and eye-friendly light for Android</title>
+<meta name="description" content="EinkReader is a free e-book reader for Android. Adjustable contrast recreates the soft look of an e-ink screen on any display; easy backlight and warm-light control protects your eyes. EPUB, FB2, no ads.">
 <style>
   :root { --bg:#fbfaf7; --fg:#1b1b1b; --muted:#5c5c5c; --line:#d9d6cf; --accent:#214a3d; }
   @media (prefers-color-scheme: dark) { :root { --bg:#121413; --fg:#ecebe6; --muted:#a5a59e; --line:#2c2f2d; --accent:#8fcab6; } }
@@ -32,19 +32,26 @@
 <nav><span class="brand">EinkReader</span><button id="toggle" type="button" aria-label="Language">RU / EN</button></nav>
 
 <section data-l="en">
-  <h1>A calm e-book reader for Android</h1>
-  <p class="lead">Read EPUB and FB2 books on a phone, a tablet or an e-ink screen. Free, no ads, no tracking.</p>
+  <h1>Give any screen the soft look of e-ink</h1>
+  <p class="lead">EinkReader is a free e-book reader for Android. Its main feature is contrast control that recreates the calm, paper-like picture of an e-ink display on an ordinary phone or tablet, plus quick control of backlight and warm light to spare your eyes. No ads, no tracking.</p>
   <div class="shots">
     <img src="img/phone.png" alt="Reading menu on a phone">
     <img src="img/eink.png" alt="Black-and-white e-ink mode">
     <img src="img/tablet.png" alt="Two-page spread on a tablet">
   </div>
+  <h2>Comfort for your eyes</h2>
+  <ul>
+    <li><b>Contrast like e-ink.</b> A black-level setting lifts pure black to a soft dark grey and keeps the page white, so text is no longer a harsh black on glowing white. It is stored separately for day and night, so the night page can stay deep while the day page looks like paper.</li>
+    <li><b>Backlight strength.</b> Brightness is set right inside the reader, down to 1%, so reading in the dark is gentle.</li>
+    <li><b>Warm light.</b> A warm tint, adjustable from none to strong, takes the blue edge off the screen in the evening.</li>
+    <li><b>One swipe each.</b> Drag a finger up or down on the left third of the screen for brightness, the middle third for contrast, the right third for warmth. No menus, no leaving the page.</li>
+  </ul>
   <h2>What it does</h2>
   <ul>
     <li>Opens EPUB, FB2 and FB2.ZIP files you add yourself. Books protected against copying are not supported.</li>
     <li>E-ink mode: pure black and white, no animation, tap and button paging, periodic full refresh to clear ghosting.</li>
     <li>Tablet mode: day, night and sepia themes, smooth page turns, two-page spread on wide screens.</li>
-    <li>Swipes on a colour screen: brightness, black level (contrast) and warm light; fonts, size, spacing and margins are adjustable.</li>
+    <li>Fonts, size, spacing and margins are adjustable.</li>
     <li>Optional sync of books and reading position between your own devices through a hidden app folder in your Google Drive. It only uses the app's own data folder; other files in your Drive are not visible to the app.</li>
     <li>English and Russian interface; a short built-in guide opens on first launch.</li>
   </ul>
@@ -58,19 +65,26 @@
 </section>
 
 <section data-l="ru">
-  <h1>Спокойная читалка для Android</h1>
-  <p class="lead">Читайте книги EPUB и FB2 на телефоне, планшете и экране электронных чернил. Бесплатно, без рекламы и без слежки.</p>
+  <h1>Мягкая картинка e-ink на любом экране</h1>
+  <p class="lead">EinkReader: бесплатная читалка для Android. Главная возможность: настройка контраста, которая воссоздаёт спокойную бумажную картинку экрана электронных чернил на обычном телефоне или планшете, плюс быстрая настройка подсветки и тёплого света, чтобы беречь глаза. Без рекламы и слежки.</p>
   <div class="shots">
     <img src="img/phone.png" alt="Меню чтения на телефоне">
     <img src="img/eink.png" alt="Чёрно-белый режим для электронных чернил">
     <img src="img/tablet.png" alt="Разворот из двух страниц на планшете">
   </div>
+  <h2>Забота о глазах</h2>
+  <ul>
+    <li><b>Контраст как у e-ink.</b> Настройка уровня чёрного поднимает чистый чёрный до мягкого тёмно-серого, а страница остаётся белой: текст перестаёт быть резким чёрным на светящемся белом. Для дня и ночи значение хранится отдельно, так что ночная страница может оставаться глубокой, а дневная выглядеть как бумага.</li>
+    <li><b>Сила подсветки.</b> Яркость меняется прямо в читалке, вплоть до 1%, поэтому читать в темноте мягко.</li>
+    <li><b>Тёплый свет.</b> Тёплый оттенок с плавной регулировкой от нуля до сильного убирает синеву экрана вечером.</li>
+    <li><b>По одному свайпу.</b> Проведите пальцем вверх или вниз в левой трети экрана для яркости, в средней для контраста, в правой для тепла. Без меню и без ухода со страницы.</li>
+  </ul>
   <h2>Что умеет</h2>
   <ul>
     <li>Открывает файлы EPUB, FB2 и FB2.ZIP, которые вы добавляете сами. Книги с защитой от копирования не поддерживаются.</li>
     <li>Режим E-ink: только чёрное и белое, без анимации, листание нажатием и кнопками, периодическое полное обновление экрана против остаточных следов.</li>
     <li>Режим планшета: темы «день», «ночь» и «сепия», плавное листание, разворот из двух страниц на широком экране.</li>
-    <li>Свайпы на цветном экране: яркость, уровень чёрного (контраст) и тёплый свет; шрифты, размер, интервалы и поля настраиваются.</li>
+    <li>Шрифты, размер, интервалы и поля настраиваются.</li>
     <li>Необязательная синхронизация книг и места чтения между вашими устройствами через скрытую папку приложения в вашем Google Диске. Приложение работает только с собственной папкой данных и не видит остальные файлы на Диске.</li>
     <li>Интерфейс на русском и английском; при первом запуске открывается короткое встроенное руководство.</li>
   </ul>
