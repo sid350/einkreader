@@ -19,7 +19,6 @@
   a { color:var(--accent); }
   nav { display:flex; justify-content:space-between; align-items:center; gap:12px; }
   nav .brand { font-weight:bold; font-size:1.1rem; }
-  nav button { font:inherit; font-size:.9rem; color:var(--fg); background:none; border:1px solid var(--line); border-radius:8px; padding:4px 12px; cursor:pointer; }
   .shots { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; align-items:start; margin:28px 0; }
   .shots figure { margin:0; }
   .shots img { width:100%; height:auto; border:1px solid var(--line); border-radius:10px; display:block; }
@@ -40,14 +39,13 @@
   .demo output { text-align:right; color:var(--muted); font-size:.85rem; }
   .demo input[type=range] { width:100%; accent-color:var(--accent); }
   .demo .cap { color:var(--muted); font-size:.85rem; text-align:center; margin:8px 0 0; }
-  [data-l]:not(.on) { display:none; }
 </style>
 </head>
 <body>
 <main>
-<nav><span class="brand">EinkReader</span><button id="toggle" type="button" aria-label="Language">RU / EN</button></nav>
+<nav><span class="brand">EinkReader</span></nav>
 
-<section data-l="en">
+<section>
   <h1>Give any screen the soft look of e-ink</h1>
   <p class="lead">EinkReader is a free e-book reader for Android. Its main feature is contrast control that recreates the calm, paper-like picture of an e-ink display on an ordinary phone or tablet, plus quick control of backlight and warm light to spare your eyes. No ads, no tracking.</p>
   <div class="shots">
@@ -94,64 +92,9 @@
   <footer class="muted">Questions and bug reports: <a href="https://github.com/sid350/einkreader/issues">GitHub issues</a>.</footer>
 </section>
 
-<section data-l="ru">
-  <h1>Мягкая картинка e-ink на любом экране</h1>
-  <p class="lead">EinkReader: бесплатная читалка для Android. Главная возможность: настройка контраста, которая воссоздаёт спокойную бумажную картинку экрана электронных чернил на обычном телефоне или планшете, плюс быстрая настройка подсветки и тёплого света, чтобы беречь глаза. Без рекламы и слежки.</p>
-  <div class="shots">
-    <figure><img src="img/phone-day.png" alt="Дневная тема: мягкий серый текст на белой странице, как на e-ink"><figcaption>День: мягкий вид e-ink</figcaption></figure>
-    <figure><img src="img/phone-night.png" alt="Ночная тема: чисто чёрный фон"><figcaption>Ночь: чистый чёрный</figcaption></figure>
-    <figure><img src="img/tablet-day.png" alt="Разворот из двух страниц на планшете в дневной теме"><figcaption>Разворот на планшете</figcaption></figure>
-  </div>
-  <h2>Забота о глазах</h2>
-  <p>Всё это настраивается свайпом прямо на странице. Поставьте палец на нужную треть экрана (не у самого верхнего или нижнего края) и проведите вверх или вниз:</p>
-  <div class="swipes" role="img" aria-label="Экран разделён на три вертикальные зоны: слева подсветка, посередине контраст, справа тепло; свайп вверх или вниз">
-    <div class="zone"><span class="arrows">&#8597;</span><b>Подсветка</b><small>левая треть<br>свайп вверх / вниз</small></div>
-    <div class="zone"><span class="arrows">&#8597;</span><b>Контраст</b><small>средняя треть<br>свайп вверх / вниз</small></div>
-    <div class="zone"><span class="arrows">&#8597;</span><b>Тепло</b><small>правая треть<br>свайп вверх / вниз</small></div>
-  </div>
-  <p class="swipes-note">Значение показывается на экране во время свайпа. Нажатия и горизонтальные свайпы по-прежнему листают страницы.</p>
-  <div class="demo" data-demo>
-    <p class="swipes-note" style="margin-top:0"><b>Попробуйте: двигайте ползунки</b></p>
-    <div class="sheet"><p style="margin:0">Пример страницы. При нулевом контрасте текст чисто чёрный на белом; увеличьте, и чёрный смягчается до серого, как на e-ink. Подсветка затемняет всю страницу, тепло добавляет янтарный оттенок.</p><div class="tint"></div></div>
-    <label>Подсветка<input type="range" min="10" max="100" value="100" data-k="b"><output></output></label>
-    <label>Контраст<input type="range" min="0" max="100" value="0" data-k="c"><output></output></label>
-    <label>Тепло<input type="range" min="0" max="100" value="0" data-k="w"><output></output></label>
-    <p class="cap">Иллюстрация: в приложении значение показывается на экране во время свайпа.</p>
-  </div>
-  <ul>
-    <li><b>Контраст как у e-ink.</b> Настройка уровня чёрного поднимает чистый чёрный до мягкого тёмно-серого, а страница остаётся белой: текст перестаёт быть резким чёрным на светящемся белом. Для дня и ночи значение хранится отдельно, так что ночная страница может оставаться глубокой, а дневная выглядеть как бумага.</li>
-    <li><b>Сила подсветки.</b> Яркость меняется прямо в читалке, вплоть до 1%, поэтому читать в темноте мягко.</li>
-    <li><b>Тёплый свет.</b> Тёплый оттенок с плавной регулировкой от нуля до сильного убирает синеву экрана вечером.</li>
-  </ul>
-  <h2>Что умеет</h2>
-  <ul>
-    <li>Открывает файлы EPUB, FB2 и FB2.ZIP, которые вы добавляете сами. Книги с защитой от копирования не поддерживаются.</li>
-    <li>Режим E-ink: только чёрное и белое, без анимации, листание нажатием и кнопками, периодическое полное обновление экрана против остаточных следов.</li>
-    <li>Режим планшета: темы «день», «ночь» и «сепия», плавное листание, разворот из двух страниц на широком экране.</li>
-    <li>Шрифты, размер, интервалы и поля настраиваются.</li>
-    <li>Необязательная синхронизация книг и места чтения между вашими устройствами через скрытую папку приложения в вашем Google Диске. Приложение работает только с собственной папкой данных и не видит остальные файлы на Диске.</li>
-    <li>Интерфейс на русском и английском; при первом запуске открывается короткое встроенное руководство.</li>
-  </ul>
-  <h2>Где скачать</h2>
-  <p>EinkReader готовится к выходу в Google Play. Ссылка появится здесь после выпуска.</p>
-  <h2>Конфиденциальность</h2>
-  <p>Все ваши книги остаются локально на вашем устройстве. Необязательная синхронизация идёт только через ваш личный Google Диск. В приложении нет аналитики и рекламы. Подробности: <a href="privacy.html">политика конфиденциальности</a>.</p>
-  <h2>Поддержать автора</h2>
-  <p>Приложение бесплатное. Если оно вам нравится, можно задонатить прямо в приложении (любая сумма, оплата через Google Play) или <a href="https://ko-fi.com/purplecat32440">поддержать автора на Ko-fi</a>. Ничего не блокируется и не открывается за это.</p>
-  <footer class="muted">Вопросы и сообщения об ошибках: <a href="https://github.com/sid350/einkreader/issues">GitHub issues</a>.</footer>
-</section>
 </main>
 <script>
 (function () {
-  var secs = document.querySelectorAll('[data-l]');
-  var saved = null;
-  try { saved = localStorage.getItem('lang'); } catch (e) {}
-  var lang = saved || ((navigator.language || 'en').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en');
-  function show(l) {
-    secs.forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-l') === l); });
-    document.documentElement.lang = l;
-    try { localStorage.setItem('lang', l); } catch (e) {}
-  }
   document.querySelectorAll('[data-demo]').forEach(function (d) {
     var sheet = d.querySelector('.sheet'), tint = d.querySelector('.tint');
     function upd() {
@@ -164,8 +107,6 @@
     }
     d.addEventListener('input', upd); upd();
   });
-  show(lang);
-  document.getElementById('toggle').addEventListener('click', function () { show(document.documentElement.lang === 'ru' ? 'en' : 'ru'); });
 })();
 </script>
 </body>
