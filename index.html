@@ -54,6 +54,8 @@
   #lb .hud.on { opacity:1; }
   #lb .hint { position:fixed; left:0; right:0; bottom:14px; text-align:center; color:#cfcfcf; font:.9rem/1.3 system-ui, sans-serif; pointer-events:none; }
   #lb .x { position:fixed; right:14px; top:14px; width:44px; height:44px; border-radius:50%; border:0; background:rgba(40,40,40,.85); color:#fff; font-size:1.4rem; cursor:pointer; z-index:2; touch-action:auto; }
+  .phone img, #lb img { pointer-events:none; -webkit-user-drag:none; -webkit-touch-callout:none; user-select:none; -webkit-user-select:none; }
+  .shots img { -webkit-user-drag:none; -webkit-touch-callout:none; }
 </style>
 </head>
 <body>
@@ -64,9 +66,9 @@
   <h1>Give any screen the soft look of e-ink</h1>
   <p class="lead">EinkReader is a free e-book reader for Android. Its main feature is contrast control that recreates the calm, paper-like picture of an e-ink display on an ordinary phone or tablet, plus quick control of backlight and warm light to spare your eyes. No ads, no tracking.</p>
   <div class="shots">
-    <figure><img src="img/phone-day.png" alt="Day theme: soft grey text on a white page, like e-ink"><figcaption>Day: soft e-ink look</figcaption></figure>
-    <figure><img src="img/phone-night.png" alt="Night theme: pure black background"><figcaption>Night: pure black</figcaption></figure>
-    <figure><img src="img/tablet-day.png" alt="Two-page spread on a tablet in the day theme"><figcaption>Tablet spread</figcaption></figure>
+    <figure><img draggable="false" src="img/phone-day.png" alt="Day theme: soft grey text on a white page, like e-ink"><figcaption>Day: soft e-ink look</figcaption></figure>
+    <figure><img draggable="false" src="img/phone-night.png" alt="Night theme: pure black background"><figcaption>Night: pure black</figcaption></figure>
+    <figure><img draggable="false" src="img/tablet-day.png" alt="Two-page spread on a tablet in the day theme"><figcaption>Tablet spread</figcaption></figure>
   </div>
   <h2>Comfort for your eyes</h2>
   <p>All three are set with a swipe, right on the page. Put a finger on one third of the screen (not at the very top or bottom edge) and drag it up or down:</p>
@@ -74,7 +76,7 @@
   <div class="demo">
     <p class="swipes-note" style="margin-top:0"><b>Try it: swipe up or down on the page</b></p>
     <div class="phone swipeable" id="inline">
-      <div class="stage"><img src="img/phone-day.png" alt="EinkReader on a phone: swipe up or down on the left, middle or right third to change backlight, contrast or warmth"><div class="tint"></div><div class="guides"><span></span><span></span><span></span></div></div>
+      <div class="stage"><img draggable="false" src="img/phone-day.png" alt="EinkReader on a phone: swipe up or down on the left, middle or right third to change backlight, contrast or warmth"><div class="tint"></div><div class="guides"><span></span><span></span><span></span></div></div>
       <div class="hud"></div>
     </div>
     <p class="cap">Left third: backlight. Middle: contrast. Right: warmth. Same as in the app. Tap a screenshot above for full screen.</p>
@@ -104,13 +106,15 @@
 
 </main>
 <div id="lb" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
-  <div class="stage"><img alt=""><div class="tint"></div><div class="guides"><span></span><span></span><span></span></div></div>
+  <div class="stage"><img alt="" draggable="false"><div class="tint"></div><div class="guides"><span></span><span></span><span></span></div></div>
   <button class="x" type="button" aria-label="Close">&times;</button>
   <div class="hud"></div>
   <div class="hint">Swipe up or down on the left, middle or right third: backlight, contrast, warmth</div>
 </div>
 <script>
 (function () {
+  document.addEventListener('dragstart', function (e) { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  ['inline', 'lb'].forEach(function (id) { document.getElementById(id).addEventListener('contextmenu', function (e) { e.preventDefault(); }); });
   var val = { b: 100, c: 40, w: 0 }, names = ['Backlight', 'Contrast', 'Warmth'], keys = ['b', 'c', 'w'];
   var targets = [];
   function applyAll() {
