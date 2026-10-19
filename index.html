@@ -25,20 +25,19 @@
   .shots figcaption { margin-top:6px; font-size:.85rem; color:var(--muted); text-align:center; }
   ul { padding-left:1.2em; }
   footer { margin-top:3em; padding-top:1em; border-top:1px solid var(--line); }
-  .swipes { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin:22px auto; max-width:520px; aspect-ratio:3/2; border:2px solid var(--fg); border-radius:18px; overflow:hidden; background:var(--bg); }
-  .zone { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:8px 4px; text-align:center; border-left:2px dashed var(--line); }
-  .zone:first-child { border-left:0; }
-  .zone .arrows { font-size:2.6rem; line-height:1; letter-spacing:.1em; color:var(--accent); }
-  .zone b { font-size:1.05rem; }
-  .zone small { color:var(--muted); font-size:.82rem; line-height:1.3; }
-  .swipes-note { text-align:center; color:var(--muted); font-size:.9rem; margin-top:-8px; }
-  .demo { max-width:520px; margin:22px auto; }
-  .demo .sheet { position:relative; background:#fff; color:#000; border:1px solid var(--line); border-radius:12px; padding:16px 18px; font-size:1rem; line-height:1.5; overflow:hidden; filter:brightness(1); }
-  .demo .sheet .tint { position:absolute; inset:0; background:#ff9a2e; mix-blend-mode:multiply; opacity:0; pointer-events:none; }
-  .demo label { display:grid; grid-template-columns:7.5em 1fr 3em; gap:10px; align-items:center; margin-top:10px; font-size:.95rem; }
-  .demo output { text-align:right; color:var(--muted); font-size:.85rem; }
-  .demo input[type=range] { width:100%; accent-color:var(--accent); }
-  .demo .cap { color:var(--muted); font-size:.85rem; text-align:center; margin:8px 0 0; }
+  .demo { margin:22px auto; text-align:center; }
+  .phone { position:relative; width:min(300px,80vw); margin:12px auto; aspect-ratio:1080/2400; border:9px solid #1d1d1d; border-radius:34px; overflow:hidden; background:#fff; box-shadow:0 0 0 1px var(--line); }
+  .phone .stage { position:absolute; inset:0; overflow:hidden; }
+  .phone img { width:100%; height:100%; display:block; filter:none; }
+  .phone .tint { position:absolute; inset:0; background:#ff9a2e; mix-blend-mode:multiply; opacity:0; pointer-events:none; }
+  .phone .zones { position:absolute; inset:0; display:grid; grid-template-columns:repeat(3,1fr); }
+  .phone .zone { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:46px 0; border-left:1px dashed rgba(0,0,0,.35); background:rgba(255,255,255,.18); }
+  .phone .zone:first-child { border-left:0; }
+  .phone .zone b { font-size:.8rem; color:#111; background:rgba(255,255,255,.85); padding:1px 6px; border-radius:6px; }
+  .phone .zone output { font-size:.8rem; color:#111; background:rgba(255,255,255,.85); padding:1px 6px; border-radius:6px; min-width:3em; }
+  .phone input[type=range] { writing-mode:vertical-lr; direction:rtl; width:28px; flex:1; accent-color:#214a3d; margin:0; }
+  .demo .cap { color:var(--muted); font-size:.85rem; margin:8px 0 0; }
+    .swipes-note { text-align:center; color:var(--muted); font-size:.9rem; margin-top:-8px; }
 </style>
 </head>
 <body>
@@ -55,19 +54,18 @@
   </div>
   <h2>Comfort for your eyes</h2>
   <p>All three are set with a swipe, right on the page. Put a finger on one third of the screen (not at the very top or bottom edge) and drag it up or down:</p>
-  <div class="swipes" role="img" aria-label="The screen split into three vertical zones: left for backlight, middle for contrast, right for warmth; swipe up or down">
-    <div class="zone"><span class="arrows">&#8597;</span><b>Backlight</b><small>left third<br>swipe up / down</small></div>
-    <div class="zone"><span class="arrows">&#8597;</span><b>Contrast</b><small>middle third<br>swipe up / down</small></div>
-    <div class="zone"><span class="arrows">&#8597;</span><b>Warmth</b><small>right third<br>swipe up / down</small></div>
-  </div>
   <p class="swipes-note">The value appears on screen while you swipe. Taps and horizontal swipes still turn pages.</p>
   <div class="demo" data-demo>
     <p class="swipes-note" style="margin-top:0"><b>Try it: drag the sliders</b></p>
-    <div class="sheet"><p style="margin:0">A sample page. At zero contrast the text is pure black on white; raise it and the black softens to grey, as on e-ink. Backlight dims the whole page; warmth adds an amber tint.</p><div class="tint"></div></div>
-    <label>Backlight<input type="range" min="10" max="100" value="100" data-k="b"><output></output></label>
-    <label>Contrast<input type="range" min="0" max="100" value="0" data-k="c"><output></output></label>
-    <label>Warmth<input type="range" min="0" max="100" value="0" data-k="w"><output></output></label>
-    <p class="cap">Illustration: the real app shows the value on screen while you swipe.</p>
+    <div class="phone">
+      <div class="stage"><img src="img/phone-day.png" alt="EinkReader on a phone: the reading page with three vertical sliders over its left, middle and right thirds"><div class="tint"></div></div>
+      <div class="zones">
+        <div class="zone"><b>Backlight</b><input type="range" min="10" max="100" value="100" data-k="b" aria-label="Backlight"><output></output></div>
+        <div class="zone"><b>Contrast</b><input type="range" min="0" max="100" value="40" data-k="c" aria-label="Contrast"><output></output></div>
+        <div class="zone"><b>Warmth</b><input type="range" min="0" max="100" value="0" data-k="w" aria-label="Warmth"><output></output></div>
+      </div>
+    </div>
+    <p class="cap">In the app you swipe up or down on a third of the page and the value appears on screen.</p>
   </div>
   <ul>
     <li><b>Contrast like e-ink.</b> A black-level setting lifts pure black to a soft dark grey and keeps the page white, so text is no longer a harsh black on glowing white. It is stored separately for day and night, so the night page can stay deep while the day page looks like paper.</li>
@@ -96,13 +94,11 @@
 <script>
 (function () {
   document.querySelectorAll('[data-demo]').forEach(function (d) {
-    var sheet = d.querySelector('.sheet'), tint = d.querySelector('.tint');
+    var img = d.querySelector('img'), tint = d.querySelector('.tint');
     function upd() {
       var v = {};
       d.querySelectorAll('input').forEach(function (i) { v[i.dataset.k] = +i.value; i.nextElementSibling.textContent = i.value + '%'; });
-      var g = Math.round(v.c * 0.9);
-      sheet.style.color = 'rgb(' + g + ',' + g + ',' + g + ')';
-      sheet.style.filter = 'brightness(' + (v.b / 100) + ')';
+      img.style.filter = 'brightness(' + (0.25 + v.b * 0.0075) + ') contrast(' + (0.6 + v.c * 0.01) + ')';
       tint.style.opacity = v.w / 100 * 0.6;
     }
     d.addEventListener('input', upd); upd();
