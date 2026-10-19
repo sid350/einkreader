@@ -26,16 +26,16 @@
   ul { padding-left:1.2em; }
   footer { margin-top:3em; padding-top:1em; border-top:1px solid var(--line); }
   .demo { margin:22px auto; text-align:center; }
-  .phone { position:relative; width:min(300px,80vw); margin:12px auto; aspect-ratio:1080/2400; border:9px solid #1d1d1d; border-radius:34px; overflow:hidden; background:#fff; box-shadow:0 0 0 1px var(--line); }
+  .phone { position:relative; width:min(220px,42vw); flex:none; margin:0; aspect-ratio:1080/2400; border:9px solid #1d1d1d; border-radius:34px; overflow:hidden; background:#fff; box-shadow:0 0 0 1px var(--line); }
   .phone .stage { position:absolute; inset:0; overflow:hidden; }
   .phone img { width:100%; height:100%; display:block; filter:none; }
   .phone .tint { position:absolute; inset:0; background:#ff9a2e; mix-blend-mode:multiply; opacity:0; pointer-events:none; }
-  .phone .zones { position:absolute; inset:0; display:grid; grid-template-columns:repeat(3,1fr); }
-  .phone .zone { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:46px 0; border-left:1px dashed rgba(0,0,0,.35); background:rgba(255,255,255,.18); }
-  .phone .zone:first-child { border-left:0; }
-  .phone .zone b { font-size:.8rem; color:#111; background:rgba(255,255,255,.85); padding:1px 6px; border-radius:6px; }
-  .phone .zone output { font-size:.8rem; color:#111; background:rgba(255,255,255,.85); padding:1px 6px; border-radius:6px; min-width:3em; }
-  .phone input[type=range] { writing-mode:vertical-lr; direction:rtl; width:28px; flex:1; accent-color:#214a3d; margin:0; }
+  .demo .row { display:flex; justify-content:center; align-items:stretch; gap:14px; margin:12px auto; }
+  .demo .controls { display:flex; gap:4px; }
+  .demo .ctl { display:flex; flex-direction:column; align-items:center; gap:8px; padding:14px 0; width:52px; font-size:.8rem; }
+  .demo .ctl b { font-size:.78rem; text-align:center; }
+  .demo .ctl output { color:var(--muted); min-width:3em; text-align:center; }
+  .demo input[type=range] { writing-mode:vertical-lr; direction:rtl; width:28px; flex:1; accent-color:var(--accent); margin:0; }
   .demo .cap { color:var(--muted); font-size:.85rem; margin:8px 0 0; }
     .swipes-note { text-align:center; color:var(--muted); font-size:.9rem; margin-top:-8px; }
 </style>
@@ -57,15 +57,17 @@
   <p class="swipes-note">The value appears on screen while you swipe. Taps and horizontal swipes still turn pages.</p>
   <div class="demo" data-demo>
     <p class="swipes-note" style="margin-top:0"><b>Try it: drag the sliders</b></p>
-    <div class="phone">
-      <div class="stage"><img src="img/phone-day.png" alt="EinkReader on a phone: the reading page with three vertical sliders over its left, middle and right thirds"><div class="tint"></div></div>
-      <div class="zones">
-        <div class="zone"><b>Backlight</b><input type="range" min="10" max="100" value="100" data-k="b" aria-label="Backlight"><output></output></div>
-        <div class="zone"><b>Contrast</b><input type="range" min="0" max="100" value="40" data-k="c" aria-label="Contrast"><output></output></div>
-        <div class="zone"><b>Warmth</b><input type="range" min="0" max="100" value="0" data-k="w" aria-label="Warmth"><output></output></div>
+    <div class="row">
+      <div class="controls">
+        <div class="ctl"><b>Backlight</b><input type="range" min="10" max="100" value="100" data-k="b" aria-label="Backlight"><output></output></div>
+        <div class="ctl"><b>Contrast</b><input type="range" min="0" max="100" value="40" data-k="c" aria-label="Contrast"><output></output></div>
+        <div class="ctl"><b>Warmth</b><input type="range" min="0" max="100" value="0" data-k="w" aria-label="Warmth"><output></output></div>
+      </div>
+      <div class="phone">
+        <div class="stage"><img src="img/phone-day.png" alt="EinkReader on a phone: the reading page"><div class="tint"></div></div>
       </div>
     </div>
-    <p class="cap">In the app you swipe up or down on a third of the page and the value appears on screen.</p>
+    <p class="cap">In the app there are no sliders: swipe up or down on the left, middle or right third of the page, and the value appears on screen.</p>
   </div>
   <ul>
     <li><b>Contrast like e-ink.</b> A black-level setting lifts pure black to a soft dark grey and keeps the page white, so text is no longer a harsh black on glowing white. It is stored separately for day and night, so the night page can stay deep while the day page looks like paper.</li>
