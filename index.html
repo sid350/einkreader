@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EinkReader: a calm e-book reader for Android</title>
+<meta name="description" content="EinkReader is a free e-book reader for Android phones, tablets and e-ink screens. EPUB, FB2, no ads, no tracking.">
+<style>
+  :root { --bg:#fbfaf7; --fg:#1b1b1b; --muted:#5c5c5c; --line:#d9d6cf; --accent:#214a3d; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#121413; --fg:#ecebe6; --muted:#a5a59e; --line:#2c2f2d; --accent:#8fcab6; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.6 Georgia, "Times New Roman", serif; }
+  main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
+  h1 { font-size:2.2rem; line-height:1.2; margin:.2em 0 .3em; }
+  h2 { font-size:1.4rem; margin:2em 0 .5em; }
+  p, li { color:var(--fg); }
+  .lead { font-size:1.2rem; color:var(--muted); }
+  .muted { color:var(--muted); font-size:.95rem; }
+  a { color:var(--accent); }
+  nav { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  nav .brand { font-weight:bold; font-size:1.1rem; }
+  nav button { font:inherit; font-size:.9rem; color:var(--fg); background:none; border:1px solid var(--line); border-radius:8px; padding:4px 12px; cursor:pointer; }
+  .shots { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; align-items:end; margin:28px 0; }
+  .shots img { width:100%; height:auto; border:1px solid var(--line); border-radius:10px; }
+  ul { padding-left:1.2em; }
+  footer { margin-top:3em; padding-top:1em; border-top:1px solid var(--line); }
+  [data-l]:not(.on) { display:none; }
+</style>
+</head>
+<body>
+<main>
+<nav><span class="brand">EinkReader</span><button id="toggle" type="button" aria-label="Language">RU / EN</button></nav>
+
+<section data-l="en">
+  <h1>A calm e-book reader for Android</h1>
+  <p class="lead">Read EPUB and FB2 books on a phone, a tablet or an e-ink screen. Free, no ads, no tracking.</p>
+  <div class="shots">
+    <img src="img/phone.png" alt="Reading menu on a phone">
+    <img src="img/eink.png" alt="Black-and-white e-ink mode">
+    <img src="img/tablet.png" alt="Two-page spread on a tablet">
+  </div>
+  <h2>What it does</h2>
+  <ul>
+    <li>Opens EPUB, FB2 and FB2.ZIP files you add yourself. Books protected against copying are not supported.</li>
+    <li>E-ink mode: pure black and white, no animation, tap and button paging, periodic full refresh to clear ghosting.</li>
+    <li>Tablet mode: day, night and sepia themes, smooth page turns, two-page spread on wide screens.</li>
+    <li>Swipes on a colour screen: brightness, black level (contrast) and warm light; fonts, size, spacing and margins are adjustable.</li>
+    <li>Optional sync of books and reading position between your own devices through a hidden app folder in your Google Drive. It only uses the app's own data folder; other files in your Drive are not visible to the app.</li>
+    <li>English and Russian interface; a short built-in guide opens on first launch.</li>
+  </ul>
+  <h2>Availability</h2>
+  <p>EinkReader is being prepared for Google Play. The link will appear here after release.</p>
+  <h2>Privacy</h2>
+  <p>Your books and reading positions stay on your device. The app has no analytics and no ads. Details: <a href="privacy.html">privacy policy</a>.</p>
+  <h2>Support the author</h2>
+  <p>The app is free. If you like it, you can <a href="https://ko-fi.com/purplecat32440">support the author on Ko-fi</a>. Nothing is locked behind it.</p>
+  <footer class="muted">Questions and bug reports: <a href="https://github.com/sid350/einkreader/issues">GitHub issues</a>.</footer>
+</section>
+
+<section data-l="ru">
+  <h1>Спокойная читалка для Android</h1>
+  <p class="lead">Читайте книги EPUB и FB2 на телефоне, планшете и экране электронных чернил. Бесплатно, без рекламы и без слежки.</p>
+  <div class="shots">
+    <img src="img/phone.png" alt="Меню чтения на телефоне">
+    <img src="img/eink.png" alt="Чёрно-белый режим для электронных чернил">
+    <img src="img/tablet.png" alt="Разворот из двух страниц на планшете">
+  </div>
+  <h2>Что умеет</h2>
+  <ul>
+    <li>Открывает файлы EPUB, FB2 и FB2.ZIP, которые вы добавляете сами. Книги с защитой от копирования не поддерживаются.</li>
+    <li>Режим E-ink: только чёрное и белое, без анимации, листание нажатием и кнопками, периодическое полное обновление экрана против остаточных следов.</li>
+    <li>Режим планшета: темы «день», «ночь» и «сепия», плавное листание, разворот из двух страниц на широком экране.</li>
+    <li>Свайпы на цветном экране: яркость, уровень чёрного (контраст) и тёплый свет; шрифты, размер, интервалы и поля настраиваются.</li>
+    <li>Необязательная синхронизация книг и места чтения между вашими устройствами через скрытую папку приложения в вашем Google Диске. Приложение работает только с собственной папкой данных и не видит остальные файлы на Диске.</li>
+    <li>Интерфейс на русском и английском; при первом запуске открывается короткое встроенное руководство.</li>
+  </ul>
+  <h2>Где скачать</h2>
+  <p>EinkReader готовится к выходу в Google Play. Ссылка появится здесь после выпуска.</p>
+  <h2>Конфиденциальность</h2>
+  <p>Ваши книги и место чтения остаются на вашем устройстве. В приложении нет аналитики и рекламы. Подробности: <a href="privacy.html">политика конфиденциальности</a>.</p>
+  <h2>Поддержать автора</h2>
+  <p>Приложение бесплатное. Если оно вам нравится, можно <a href="https://ko-fi.com/purplecat32440">поддержать автора на Ko-fi</a>. Ничего не блокируется и не открывается за это.</p>
+  <footer class="muted">Вопросы и сообщения об ошибках: <a href="https://github.com/sid350/einkreader/issues">GitHub issues</a>.</footer>
+</section>
+</main>
+<script>
+(function () {
+  var secs = document.querySelectorAll('[data-l]');
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  var lang = saved || ((navigator.language || 'en').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en');
+  function show(l) {
+    secs.forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-l') === l); });
+    document.documentElement.lang = l;
+    try { localStorage.setItem('lang', l); } catch (e) {}
+  }
+  show(lang);
+  document.getElementById('toggle').addEventListener('click', function () { show(document.documentElement.lang === 'ru' ? 'en' : 'ru'); });
+})();
+</script>
+</body>
+</html>
