@@ -26,18 +26,34 @@
   ul { padding-left:1.2em; }
   footer { margin-top:3em; padding-top:1em; border-top:1px solid var(--line); }
   .demo { margin:22px auto; text-align:center; }
-  .phone { position:relative; width:min(220px,42vw); flex:none; margin:0; aspect-ratio:1080/2400; border:9px solid #1d1d1d; border-radius:34px; overflow:hidden; background:#fff; box-shadow:0 0 0 1px var(--line); }
+  .phone { position:relative; aspect-ratio:1080/2400; border:9px solid #1d1d1d; border-radius:34px; overflow:hidden; background:#fff; box-shadow:0 0 0 1px var(--line); }
   .phone .stage { position:absolute; inset:0; overflow:hidden; }
   .phone img { width:100%; height:100%; display:block; filter:none; }
   .phone .tint { position:absolute; inset:0; background:#ff9a2e; mix-blend-mode:multiply; opacity:0; pointer-events:none; }
-  .demo .row { display:flex; justify-content:center; align-items:stretch; gap:14px; margin:12px auto; }
-  .demo .controls { display:flex; gap:4px; }
-  .demo .ctl { display:flex; flex-direction:column; align-items:center; gap:8px; padding:14px 0; width:52px; font-size:.8rem; }
-  .demo .ctl b { font-size:.78rem; text-align:center; }
-  .demo .ctl output { color:var(--muted); min-width:3em; text-align:center; }
-  .demo input[type=range] { writing-mode:vertical-lr; direction:rtl; width:28px; flex:1; accent-color:var(--accent); margin:0; }
+  .phone { touch-action:none; user-select:none; -webkit-user-select:none; width:min(260px,70vw); margin:12px auto; }
+  .phone .stage { touch-action:none; }
+  .phone .guides { position:absolute; inset:0; pointer-events:none; display:grid; grid-template-columns:repeat(3,1fr); }
+  .phone .guides span { border-left:1px dashed rgba(128,128,128,.5); }
+  .phone .guides span:first-child { border-left:0; }
+  .phone .hud { position:absolute; left:50%; top:10px; transform:translateX(-50%); background:rgba(20,20,20,.85); color:#fff; font:600 .85rem/1 system-ui, sans-serif; padding:7px 11px; border-radius:8px; pointer-events:none; opacity:0; transition:opacity .15s; white-space:nowrap; }
+  .phone .hud.on { opacity:1; }
   .demo .cap { color:var(--muted); font-size:.85rem; margin:8px 0 0; }
     .swipes-note { text-align:center; color:var(--muted); font-size:.9rem; margin-top:-8px; }
+  .shots figure { cursor:zoom-in; }
+  .shots img { cursor:zoom-in; }
+  .shots figcaption::after { content:" \2197"; }
+  #lb { position:fixed; inset:0; z-index:50; background:#000; display:none; align-items:center; justify-content:center; touch-action:none; user-select:none; -webkit-user-select:none; }
+  #lb.open { display:flex; }
+  #lb .stage { position:relative; line-height:0; }
+  #lb img { max-width:100vw; max-height:100vh; display:block; pointer-events:none; -webkit-user-drag:none; }
+  #lb .tint { position:absolute; inset:0; background:#ff9a2e; mix-blend-mode:multiply; opacity:0; pointer-events:none; }
+  #lb .guides { position:absolute; inset:0; pointer-events:none; display:grid; grid-template-columns:repeat(3,1fr); }
+  #lb .guides span { border-left:1px dashed rgba(128,128,128,.55); }
+  #lb .guides span:first-child { border-left:0; }
+  #lb .hud { position:fixed; left:50%; top:16px; transform:translateX(-50%); background:rgba(20,20,20,.85); color:#fff; font:600 1rem/1 system-ui, sans-serif; padding:10px 16px; border-radius:10px; pointer-events:none; opacity:0; transition:opacity .15s; }
+  #lb .hud.on { opacity:1; }
+  #lb .hint { position:fixed; left:0; right:0; bottom:14px; text-align:center; color:#cfcfcf; font:.9rem/1.3 system-ui, sans-serif; pointer-events:none; }
+  #lb .x { position:fixed; right:14px; top:14px; width:44px; height:44px; border-radius:50%; border:0; background:rgba(40,40,40,.85); color:#fff; font-size:1.4rem; cursor:pointer; z-index:2; touch-action:auto; }
 </style>
 </head>
 <body>
@@ -54,20 +70,14 @@
   </div>
   <h2>Comfort for your eyes</h2>
   <p>All three are set with a swipe, right on the page. Put a finger on one third of the screen (not at the very top or bottom edge) and drag it up or down:</p>
-  <p class="swipes-note">The value appears on screen while you swipe. Taps and horizontal swipes still turn pages.</p>
-  <div class="demo" data-demo>
-    <p class="swipes-note" style="margin-top:0"><b>Try it: drag the sliders</b></p>
-    <div class="row">
-      <div class="controls">
-        <div class="ctl"><b>Backlight</b><input type="range" min="10" max="100" value="100" data-k="b" aria-label="Backlight"><output></output></div>
-        <div class="ctl"><b>Contrast</b><input type="range" min="0" max="100" value="40" data-k="c" aria-label="Contrast"><output></output></div>
-        <div class="ctl"><b>Warmth</b><input type="range" min="0" max="100" value="0" data-k="w" aria-label="Warmth"><output></output></div>
-      </div>
-      <div class="phone">
-        <div class="stage"><img src="img/phone-day.png" alt="EinkReader on a phone: the reading page"><div class="tint"></div></div>
-      </div>
+  <p class="swipes-note"></p>
+  <div class="demo">
+    <p class="swipes-note" style="margin-top:0"><b>Try it: swipe up or down on the page</b></p>
+    <div class="phone swipeable" id="inline">
+      <div class="stage"><img src="img/phone-day.png" alt="EinkReader on a phone: swipe up or down on the left, middle or right third to change backlight, contrast or warmth"><div class="tint"></div><div class="guides"><span></span><span></span><span></span></div></div>
+      <div class="hud"></div>
     </div>
-    <p class="cap">In the app there are no sliders: swipe up or down on the left, middle or right third of the page, and the value appears on screen.</p>
+    <p class="cap">Left third: backlight. Middle: contrast. Right: warmth. Same as in the app. Tap a screenshot above for full screen.</p>
   </div>
   <ul>
     <li><b>Contrast like e-ink.</b> A black-level setting lifts pure black to a soft dark grey and keeps the page white, so text is no longer a harsh black on glowing white. It is stored separately for day and night, so the night page can stay deep while the day page looks like paper.</li>
@@ -93,18 +103,57 @@
 </section>
 
 </main>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <div class="stage"><img alt=""><div class="tint"></div><div class="guides"><span></span><span></span><span></span></div></div>
+  <button class="x" type="button" aria-label="Close">&times;</button>
+  <div class="hud"></div>
+  <div class="hint">Swipe up or down on the left, middle or right third: backlight, contrast, warmth</div>
+</div>
 <script>
 (function () {
-  document.querySelectorAll('[data-demo]').forEach(function (d) {
-    var img = d.querySelector('img'), tint = d.querySelector('.tint');
-    function upd() {
-      var v = {};
-      d.querySelectorAll('input').forEach(function (i) { v[i.dataset.k] = +i.value; i.nextElementSibling.textContent = i.value + '%'; });
-      img.style.filter = 'brightness(' + (0.25 + v.b * 0.0075) + ') contrast(' + (0.6 + v.c * 0.01) + ')';
-      tint.style.opacity = v.w / 100 * 0.6;
-    }
-    d.addEventListener('input', upd); upd();
+  var val = { b: 100, c: 40, w: 0 }, names = ['Backlight', 'Contrast', 'Warmth'], keys = ['b', 'c', 'w'];
+  var targets = [];
+  function applyAll() {
+    targets.forEach(function (t) {
+      t.img.style.filter = 'brightness(' + (0.25 + val.b * 0.0075) + ') contrast(' + (0.6 + val.c * 0.01) + ')';
+      t.tint.style.opacity = val.w / 100 * 0.6;
+    });
+  }
+  function swipe(surface, img, tint, hud, onOutside) {
+    targets.push({ img: img, tint: tint });
+    var drag = null, hudT = null;
+    function show() { hud.textContent = drag.n + ' ' + val[drag.k] + '%'; hud.classList.add('on'); clearTimeout(hudT); }
+    surface.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('.x')) return;
+      var r = img.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) { if (onOutside) onOutside(); return; }
+      var z = Math.min(2, Math.floor((e.clientX - r.left) / r.width * 3));
+      drag = { k: keys[z], n: names[z], y: e.clientY, v: val[keys[z]], h: r.height };
+      surface.setPointerCapture(e.pointerId); show();
+    });
+    surface.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var v = drag.v + (drag.y - e.clientY) / (drag.h * 0.6) * 100;
+      val[drag.k] = Math.max(drag.k === 'b' ? 10 : 0, Math.min(100, Math.round(v)));
+      applyAll(); show();
+    });
+    function end() { drag = null; clearTimeout(hudT); hudT = setTimeout(function () { hud.classList.remove('on'); }, 700); }
+    surface.addEventListener('pointerup', end); surface.addEventListener('pointercancel', end);
+  }
+  var inl = document.getElementById('inline');
+  swipe(inl, inl.querySelector('img'), inl.querySelector('.tint'), inl.querySelector('.hud'));
+  var lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+  function lbClose() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  swipe(lb, lbImg, lb.querySelector('.tint'), lb.querySelector('.hud'), lbClose);
+  document.querySelectorAll('.shots img').forEach(function (im) {
+    im.tabIndex = 0;
+    function open() { lbImg.src = im.src; lbImg.alt = im.alt; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    im.addEventListener('click', open);
+    im.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   });
+  lb.querySelector('.x').addEventListener('click', lbClose);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lbClose(); });
+  applyAll();
 })();
 </script>
 </body>
