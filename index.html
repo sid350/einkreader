@@ -20,8 +20,10 @@
   nav { display:flex; justify-content:space-between; align-items:center; gap:12px; }
   nav .brand { font-weight:bold; font-size:1.1rem; }
   nav button { font:inherit; font-size:.9rem; color:var(--fg); background:none; border:1px solid var(--line); border-radius:8px; padding:4px 12px; cursor:pointer; }
-  .shots { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; align-items:end; margin:28px 0; }
-  .shots img { width:100%; height:auto; border:1px solid var(--line); border-radius:10px; }
+  .shots { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; align-items:start; margin:28px 0; }
+  .shots figure { margin:0; }
+  .shots img { width:100%; height:auto; border:1px solid var(--line); border-radius:10px; display:block; }
+  .shots figcaption { margin-top:6px; font-size:.85rem; color:var(--muted); text-align:center; }
   ul { padding-left:1.2em; }
   footer { margin-top:3em; padding-top:1em; border-top:1px solid var(--line); }
   [data-l]:not(.on) { display:none; }
@@ -35,9 +37,9 @@
   <h1>Give any screen the soft look of e-ink</h1>
   <p class="lead">EinkReader is a free e-book reader for Android. Its main feature is contrast control that recreates the calm, paper-like picture of an e-ink display on an ordinary phone or tablet, plus quick control of backlight and warm light to spare your eyes. No ads, no tracking.</p>
   <div class="shots">
-    <img src="img/phone.png" alt="Reading menu on a phone">
-    <img src="img/eink.png" alt="Black-and-white e-ink mode">
-    <img src="img/tablet.png" alt="Two-page spread on a tablet">
+    <figure><img src="img/phone-day.png" alt="Day theme: soft grey text on a white page, like e-ink"><figcaption>Day: soft e-ink look</figcaption></figure>
+    <figure><img src="img/phone-night.png" alt="Night theme: pure black background"><figcaption>Night: pure black</figcaption></figure>
+    <figure><img src="img/tablet-day.png" alt="Two-page spread on a tablet in the day theme"><figcaption>Tablet spread</figcaption></figure>
   </div>
   <h2>Comfort for your eyes</h2>
   <ul>
@@ -68,9 +70,9 @@
   <h1>Мягкая картинка e-ink на любом экране</h1>
   <p class="lead">EinkReader: бесплатная читалка для Android. Главная возможность: настройка контраста, которая воссоздаёт спокойную бумажную картинку экрана электронных чернил на обычном телефоне или планшете, плюс быстрая настройка подсветки и тёплого света, чтобы беречь глаза. Без рекламы и слежки.</p>
   <div class="shots">
-    <img src="img/phone.png" alt="Меню чтения на телефоне">
-    <img src="img/eink.png" alt="Чёрно-белый режим для электронных чернил">
-    <img src="img/tablet.png" alt="Разворот из двух страниц на планшете">
+    <figure><img src="img/phone-day.png" alt="Дневная тема: мягкий серый текст на белой странице, как на e-ink"><figcaption>День: мягкий вид e-ink</figcaption></figure>
+    <figure><img src="img/phone-night.png" alt="Ночная тема: чисто чёрный фон"><figcaption>Ночь: чистый чёрный</figcaption></figure>
+    <figure><img src="img/tablet-day.png" alt="Разворот из двух страниц на планшете в дневной теме"><figcaption>Разворот на планшете</figcaption></figure>
   </div>
   <h2>Забота о глазах</h2>
   <ul>
