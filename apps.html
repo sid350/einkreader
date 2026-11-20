@@ -17,6 +17,10 @@
   .muted { color:var(--muted); font-size:.95rem; }
   a { color:var(--accent); }
   footer { margin-top:3em; padding-top:1em; border-top:1px solid var(--line); }
+  .shots { display:grid; gap:14px; margin:22px 0; }
+  .shots img { width:100%; height:auto; border:1px solid var(--line); border-radius:10px; display:block; }
+  .shots figcaption { margin-top:6px; font-size:.85rem; color:var(--muted); text-align:center; }
+  figure { margin:0; }
   a.play { display:inline-block; background:var(--accent); color:var(--bg); text-decoration:none; font:600 1rem/1 system-ui, sans-serif; padding:14px 22px; border-radius:10px; }
 </style>
 </head>
@@ -25,11 +29,15 @@
 <h1>EinkReader</h1>
 <p class="lead">An e-book reader for EPUB and FB2 with the soft, paper-like look of an e-ink screen. No ads.</p>
 
+<div class="shots"><figure><img src="img/ios-hero.jpg" alt="EinkReader on an unfolded foldable iPhone: a two-page spread on warm paper-like pages"><figcaption>Two-page spread on an unfolded foldable</figcaption></figure></div>
+
 <h2>Android</h2>
 <p><a class="play" href="https://play.google.com/store/apps/details?id=app.einkreader">Get it on Google Play</a></p>
 
 <h2>iPhone and iPad</h2>
 <p>EinkReader is coming to the App Store for iPhone and iPad, with a two-page spread on unfolded foldables. The App Store link will appear here as soon as the app is live.</p>
+
+<div class="shots"><figure><img src="img/ios-night-spread.jpg" alt="EinkReader night theme, two-page spread"><figcaption>Night theme</figcaption></figure></div>
 
 <h2>Sync between your devices</h2>
 <p>Sign in with the same Google account in the Android and iPhone/iPad apps, and your books and reading position sync through a folder named TTSReader in your Google Drive. The apps only see the files they created themselves; other files in your Drive are not visible to them.</p>
